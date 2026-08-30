@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-mafinest: var(--font-mafinest-local);
+  --font-serif: var(--font-playfair-google);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mafinest-local), sans-serif;
+  cursor: auto;
+}
+
+img, picture, svg, canvas, video {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@media (pointer: fine) {
+  body {
+    cursor: auto !important;
+  }
+}
+
+@keyframes thumbnail-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 6px));
+  }
+}
+
+/* Hide Next.js development error/issues overlays */
+nextjs-portal,
+[data-nextjs-dialog-overlay],
+[data-nextjs-toast],
+#nextjs-hot-loader-overlay {
+  display: none !important;
+}
+
+/* Responsive Scaling for Laptop Screens (between tablet and laptop L) */
+@media (min-width: 900px) and (max-width: 1279px) {
+  /* Scale down PillNav */
+  nav[aria-label="Primary"] {
+    --nav-h: 34px !important;
+    --logo: 28px !important;
+    --pill-pad-x: 12px !important;
+    --pill-gap: 2px !important;
+  }
+  
+  nav[aria-label="Primary"] a,
+  nav[aria-label="Primary"] [role="menuitem"] {
+    font-size: 11px !important;
+  }
+
+  /* Shrink active indicator dot */
+  nav[aria-label="Primary"] span[class*="-bottom-"] {
+    bottom: -4px !important;
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  /* Scale down ThemeToggle and middle align it with PillNav */
+  button[aria-label="Toggle theme"] {
+    top: 24px !important; /* Align exactly with PillNav container's top-6 */
+    right: 24px !important;
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  button[aria-label="Toggle theme"] svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+
+
