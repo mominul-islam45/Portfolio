@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import ImageTrail from '@/components/ImageTrail';
+import dynamic from 'next/dynamic';
 import { ScrollAnimation } from '@/components/ui/ScrollAnimation';
 import ScrollText from '@/components/ui/ScrollText';
 import VideoMasonry from '@/components/VideoMasonry';
@@ -15,6 +15,11 @@ import LogoLoop from '@/components/LogoLoop';
 import ReviewCarousel from '@/components/ReviewCarousel';
 import VenomButton from '@/components/ui/VenomButton';
 import { videoProjects } from '@/data/videos';
+
+const ImageTrail = dynamic(() => import('@/components/ImageTrail'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const trailImages = [
   '/Statics%20%28reduced%29/Asan%20%282%29.webp',
@@ -55,12 +60,13 @@ const clientLogos = [
 export default function Home() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showImageTrail, setShowImageTrail] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsDesktop(width >= 500);
+      setIsDesktop(width >= 1024);
       setIsMobile(width < 640);
     };
     handleResize();
@@ -74,8 +80,11 @@ export default function Home() {
       <section
         id="home"
         className="relative min-h-screen w-full flex flex-col justify-center items-center border-b border-zinc-100 dark:border-zinc-900 overflow-hidden bg-white dark:bg-zinc-950"
+        onPointerMove={(event) => {
+          if (isDesktop && !showImageTrail && event.pointerType !== 'touch') setShowImageTrail(true);
+        }}
       >
-        {isDesktop && <ImageTrail items={trailImages} variant={2} />}
+        {isDesktop && showImageTrail && <ImageTrail items={trailImages} variant={2} />}
 
         <div className="absolute bottom-8 left-6 z-20 hidden pointer-events-auto min-[900px]:block xl:bottom-12 xl:left-12">
           <ProfileCard
@@ -146,7 +155,7 @@ export default function Home() {
               </h2>
             </div>
           </div>
-          <VideoMasonry videos={videoProjects.slice(0, 8)} />
+          <VideoMasonry videos={videoProjects.slice(1, 6)} />
           <ScrollAnimation direction="up" delay={0.15} className="mt-8 flex justify-center">
             <VenomButton href="/video-editing" />
           </ScrollAnimation>

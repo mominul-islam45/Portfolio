@@ -740,6 +740,7 @@ export default function VenomButton(props: Props) {
         }
 
         let raf = 0
+        let inViewport = false
         let prev = -1
         let t0 = -1
         const draw = (now: number) => {
@@ -1141,17 +1142,44 @@ export default function VenomButton(props: Props) {
         // One rAF loop. Under reduced motion nothing moves, but it still draws, so colour and label
         // changes show at once.
         const frame = (now: number) => {
-            raf = requestAnimationFrame(frame)
+            raf = 0
+            if (!inViewport || document.hidden) return
             draw(now)
+            raf = requestAnimationFrame(frame)
+        }
+        const startFrame = () => {
+            if (inViewport && !document.hidden && !raf && !reduced) raf = requestAnimationFrame(frame)
+        }
+        const visibilityObserver = typeof IntersectionObserver === "undefined"
+            ? null
+            : new IntersectionObserver(([entry]) => {
+                inViewport = entry.isIntersecting
+                if (inViewport) startFrame()
+                else {
+                    cancelAnimationFrame(raf)
+                    raf = 0
+                }
+            }, { rootMargin: "100px" })
+        const onDocumentVisibilityChange = () => {
+            if (document.hidden) {
+                cancelAnimationFrame(raf)
+                raf = 0
+            } else startFrame()
         }
         const ro = new ResizeObserver(fit)
         ro.observe(stage)
         ro.observe(btn)
         fit()
-        raf = requestAnimationFrame(frame)
+        if (visibilityObserver) visibilityObserver.observe(stage)
+        else inViewport = true
+        document.addEventListener("visibilitychange", onDocumentVisibilityChange)
+        if (reduced) draw(performance.now())
+        else startFrame()
         return () => {
             cancelAnimationFrame(raf)
             ro.disconnect()
+            visibilityObserver?.disconnect()
+            document.removeEventListener("visibilitychange", onDocumentVisibilityChange)
             window.removeEventListener("pointermove", onMove)
             stage.removeEventListener("pointerdown", onDown)
             window.removeEventListener("pointerleave", onLeave)

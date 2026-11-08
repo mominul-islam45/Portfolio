@@ -68,6 +68,7 @@ export default function VenomButton(props: Props) {
           <OriginkitVenomButton
             label={label}
             size={56}
+            autoplay={false}
             onClick={handleDesktopClick}
             style={buttonStageStyle}
           />

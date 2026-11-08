@@ -8,8 +8,8 @@ export type VideoProject = {
 };
 
 export const videoProjects: VideoProject[] = [
-  { id: '6p4eZm1agO8', title: 'Video edit / 01', category: 'Video editing', aspectRatio: 'portrait' },
-  { id: 'gROrfP8t8N8', title: 'Video edit / 02', category: 'Video editing', aspectRatio: 'portrait' },
+  { id: 'gROrfP8t8N8', title: 'Video edit / 01', category: 'Video editing', aspectRatio: 'portrait' },
+  { id: '6p4eZm1agO8', title: 'Video edit / 02', category: 'Video editing', aspectRatio: 'portrait' },
   { id: '5ejGek-hUgw', title: 'SaaS explainer / 01', category: 'SaaS explainer', aspectRatio: 'wide' },
   { id: 'on0aBPUPgig', title: 'SaaS explainer / 02', category: 'SaaS explainer', aspectRatio: 'wide' },
   { id: 's6e5PWDGt9k', title: 'SaaS explainer / 03', category: 'SaaS explainer', aspectRatio: 'wide' },
