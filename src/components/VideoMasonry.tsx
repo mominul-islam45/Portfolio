@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState, type MouseEvent } from 'react';
-import Image from 'next/image';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Play, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import type { VideoProject } from '@/data/videos';
 import { ScrollAnimation } from '@/components/ui/ScrollAnimation';
 
@@ -36,59 +35,6 @@ function embedUrl(video: VideoProject, preview = false) {
   });
 
   return `https://www.youtube-nocookie.com/embed/${video.id}?${params.toString()}`;
-}
-
-function thumbnailUrl(video: VideoProject) {
-  return `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
-}
-
-function AutoplayPreview({ video, active }: { video: VideoProject; active: boolean }) {
-  const previewRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    const element = previewRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { rootMargin: '100px', threshold: 0.1 },
-    );
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={previewRef} className={`relative ${aspectClasses[video.aspectRatio]} overflow-hidden bg-zinc-900`}>
-      <Image
-        src={thumbnailUrl(video)}
-        alt=""
-        width={480}
-        height={360}
-        loading="lazy"
-        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
-      {isInView && !active && (
-        <iframe
-          src={embedUrl(video, true)}
-          title={`${video.title} autoplay preview`}
-          allow="autoplay; encrypted-media; picture-in-picture"
-          loading="lazy"
-          tabIndex={-1}
-          className="pointer-events-none absolute inset-0 h-full w-full scale-[1.01] object-cover"
-        />
-      )}
-      {!isInView && (
-        <span className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/50 bg-black/55 text-white shadow-lg backdrop-blur-sm transition-transform group-hover:scale-110">
-            <Play className="ml-1 h-6 w-6 fill-current" aria-hidden="true" />
-          </span>
-        </span>
-      )}
-    </div>
-  );
 }
 
 export default function VideoMasonry({ videos, columnsClassName = 'columns-1 gap-5 sm:columns-2 xl:columns-3' }: VideoMasonryProps) {
@@ -131,7 +77,17 @@ export default function VideoMasonry({ videos, columnsClassName = 'columns-1 gap
               backgroundImage: 'radial-gradient(circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(255,255,255,.24), transparent 34%)',
             }}
           >
-            <AutoplayPreview video={video} active={activeVideo?.id === video.id} />
+            <div className={`relative ${aspectClasses[video.aspectRatio]} overflow-hidden bg-zinc-900`}>
+              {activeVideo?.id !== video.id && (
+                <iframe
+                  src={embedUrl(video, true)}
+                  title={`${video.title} muted autoplay preview`}
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  tabIndex={-1}
+                  className="pointer-events-none absolute inset-0 h-full w-full scale-[1.01] object-cover"
+                />
+              )}
+            </div>
           </ScrollAnimation>
         ))}
       </div>
