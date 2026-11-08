@@ -13,8 +13,8 @@ import AutoScrollSlider from '@/components/AutoScrollSlider';
 import ProfileCard from '@/components/ProfileCard';
 import LogoLoop from '@/components/LogoLoop';
 import ReviewCarousel from '@/components/ReviewCarousel';
+import VenomButton from '@/components/ui/VenomButton';
 import { videoProjects } from '@/data/videos';
-import { ArrowRight } from 'lucide-react';
 
 const trailImages = [
   '/Statics%20%28reduced%29/Asan%20%282%29.webp',
@@ -145,11 +145,11 @@ export default function Home() {
                 <ScrollText as="span" text="reels & ads" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
               </h2>
             </div>
-            <Link href="/video-editing" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-900 transition-transform hover:translate-x-1 dark:text-zinc-100">
-              View more <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
           <VideoMasonry videos={videoProjects.slice(0, 8)} />
+          <ScrollAnimation direction="up" delay={0.15} className="mt-8 flex justify-center">
+            <VenomButton href="/video-editing" />
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -193,11 +193,9 @@ export default function Home() {
               <ScrollText as="span" text="campaign work" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
             </h2>
           </div>
-          <div className="mb-8 flex justify-center">
-            <Link href="/graphic-design" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-900 transition-transform hover:translate-x-1 dark:text-zinc-100">
-              View more <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <ScrollAnimation direction="up" delay={0.15} className="mb-8 flex justify-center">
+            <VenomButton href="/graphic-design" />
+          </ScrollAnimation>
           <ScrollAnimation direction="up" delay={0.15}>
             <Smooth3DSlideshow slides={graphicSlides} />
           </ScrollAnimation>
@@ -217,9 +215,9 @@ export default function Home() {
                 <ScrollText as="span" text="thumbnails" className="font-serif font-light italic lowercase tracking-normal" direction="up" />
               </h2>
             </div>
-            <Link href="/graphic-design#thumbnail-work" className="inline-flex items-center justify-center gap-2 text-sm font-medium text-zinc-900 transition-transform hover:translate-x-1 dark:text-zinc-100">
-              View more <ArrowRight className="h-4 w-4" />
-            </Link>
+            <ScrollAnimation direction="up" delay={0.15}>
+              <VenomButton href="/graphic-design#thumbnail-work" />
+            </ScrollAnimation>
           </div>
           <ScrollAnimation direction="up" delay={0.15}>
             <div className="xl:hidden">

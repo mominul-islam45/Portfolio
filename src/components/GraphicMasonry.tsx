@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { ScrollAnimation } from '@/components/ui/ScrollAnimation';
+import VenomButton from '@/components/ui/VenomButton';
 
 type GraphicMasonryProps = {
   images: string[];
@@ -53,15 +54,9 @@ export default function GraphicMasonry({ images, desktopColumnsClassName = 'md:c
     <>
       {renderGallery(showAllMobile ? images : images.slice(0, 20), 'columns-2 gap-5 md:hidden')}
       {!showAllMobile && images.length > 20 && (
-        <div className="mt-8 flex justify-center md:hidden">
-          <button
-            type="button"
-            onClick={() => setShowAllMobile(true)}
-            className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
-          >
-            View more
-          </button>
-        </div>
+        <ScrollAnimation direction="up" delay={0.15} className="mt-8 flex justify-center md:hidden">
+          <VenomButton label="View more" onClick={() => setShowAllMobile(true)} />
+        </ScrollAnimation>
       )}
       {renderGallery(images, `hidden gap-5 ${desktopColumnsClassName} md:block`)}
 
