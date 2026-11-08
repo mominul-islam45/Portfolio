@@ -27,25 +27,31 @@ import {
 // REMOTION-COMPATIBLE MATH & PHYSICS ENGINE (interpolate, spring, Easing)
 // ============================================================================
 
-const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+const clamp = (val: number, min: number, max: number) => Math.min(Math.max(val, min), max);
 
 const Easing = {
-  linear: (t) => t,
-  easeOutExpo: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-  easeInExpo: (t) => (t === 0 ? 0 : Math.pow(2, 10 * t - 10)),
-  easeInOutCubic: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
-  easeOutBack: (t) => {
+  linear: (t: number) => t,
+  easeOutExpo: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+  easeInExpo: (t: number) => (t === 0 ? 0 : Math.pow(2, 10 * t - 10)),
+  easeInOutCubic: (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+  easeOutBack: (t: number) => {
     const c1 = 1.70158;
     const c3 = c1 + 1;
     return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
   },
-  easeInOutQuart: (t) => (t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2),
+  easeInOutQuart: (t: number) => (t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2),
+};
+
+type InterpolateOptions = {
+  extrapolateLeft?: 'clamp' | 'extend' | 'identity';
+  extrapolateRight?: 'clamp' | 'extend' | 'identity';
+  easing?: (progress: number) => number;
 };
 
 /**
  * Remotion-equivalent interpolate() function
  */
-function interpolate(frame, inputRange, outputRange, options = {}) {
+function interpolate(frame: number, inputRange: number[], outputRange: number[], options: InterpolateOptions = {}) {
   const {
     extrapolateLeft = 'clamp',
     extrapolateRight = 'clamp',
@@ -83,7 +89,21 @@ function interpolate(frame, inputRange, outputRange, options = {}) {
 /**
  * Analytical damped harmonic oscillator matching Remotion's spring()
  */
-function spring({ frame, fps = 60, config = {}, from = 0, to = 1, delay = 0 }) {
+function spring({
+  frame,
+  fps = 60,
+  config = {},
+  from = 0,
+  to = 1,
+  delay = 0,
+}: {
+  frame: number;
+  fps?: number;
+  config?: { damping?: number; mass?: number; stiffness?: number };
+  from?: number;
+  to?: number;
+  delay?: number;
+}) {
   const f = frame - delay;
   if (f <= 0) return from;
 
@@ -112,15 +132,17 @@ function spring({ frame, fps = 60, config = {}, from = 0, to = 1, delay = 0 }) {
 // ============================================================================
 
 class MotionAudioEngine {
+  ctx: AudioContext | null = null;
+  lastScene = -1;
+  lastBeatFrame = -1;
+
   constructor() {
     this.ctx = null;
-    this.lastScene = -1;
-    this.lastBeatFrame = -1;
   }
 
   init() {
     if (!this.ctx && typeof window !== 'undefined') {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      const AudioCtx = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (AudioCtx) {
         this.ctx = new AudioCtx();
       }
@@ -171,11 +193,12 @@ class MotionAudioEngine {
   }
 
   playStab(freqs = [220, 330, 440, 660], duration = 0.35) {
-    if (!this.ctx) return;
-    const now = this.ctx.currentTime;
+    const ctx = this.ctx;
+    if (!ctx) return;
+    const now = ctx.currentTime;
     freqs.forEach((f, idx) => {
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
       osc.type = idx % 2 === 0 ? 'sawtooth' : 'triangle';
       osc.frequency.setValueAtTime(f, now);
 
@@ -183,7 +206,7 @@ class MotionAudioEngine {
       gain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
 
       osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(ctx.destination);
       osc.start(now);
       osc.stop(now + duration);
     });
@@ -207,7 +230,7 @@ class MotionAudioEngine {
     osc.stop(now + 0.05);
   }
 
-  triggerForFrame(frame) {
+  triggerForFrame(frame: number) {
     if (!this.ctx) return;
     const f = Math.floor(frame);
 
@@ -310,7 +333,7 @@ const SCENES = [
 // SCENE 1 (0 - 120): "THE SPARK" — 3D Kinetic Tunnel & Geometric Morph
 // ============================================================================
 
-const Scene1Spark = ({ frame, fps }) => {
+const Scene1Spark = ({ frame, fps }: { frame: number; fps: number }) => {
   // 4-stage shape morph every 25 frames: Circle -> Square -> Star -> Prism
   const enterScale = spring({
     frame,
@@ -681,7 +704,7 @@ const Scene1Spark = ({ frame, fps }) => {
 // SCENE 2 (120 - 240): "KINETIC TYPOGRAPHY & BENTO TELEMETRY"
 // ============================================================================
 
-const Scene2KineticType = ({ frame, fps }) => {
+const Scene2KineticType = ({ frame, fps }: { frame: number; fps: number }) => {
   const localFrame = frame - 120; // 0 to 120
 
   // High-contrast palette invert between Acid Lime, Deep Black, and Electric Violet
@@ -1045,7 +1068,7 @@ const Scene2KineticType = ({ frame, fps }) => {
 // SCENE 3 (240 - 390): "3D ISOMETRIC & LIQUID MORPH"
 // ============================================================================
 
-const Scene3LiquidPrism = ({ frame, fps }) => {
+const Scene3LiquidPrism = ({ frame, fps }: { frame: number; fps: number }) => {
   const localFrame = frame - 240; // 0 to 150
   const enterSpring = spring({
     frame: localFrame,
@@ -1240,7 +1263,7 @@ const Scene3LiquidPrism = ({ frame, fps }) => {
             }}
           >
             <div style={{ color: '#c084fc', fontSize: '16px', marginBottom: '12px' }}>
-              // GOOEY MATRIX KERNEL
+              {'// GOOEY MATRIX KERNEL'}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', marginBottom: '6px' }}>
               <span style={{ color: '#94a3b8' }}>STD_DEVIATION:</span>
@@ -1304,7 +1327,7 @@ const Scene3LiquidPrism = ({ frame, fps }) => {
 // SCENE 4 (390 - 510): "HYPER-SPEED SHOWCASE" — Fast-Cut Slam Sequence
 // ============================================================================
 
-const Scene4HyperSpeed = ({ frame, fps }) => {
+const Scene4HyperSpeed = ({ frame, fps }: { frame: number; fps: number }) => {
   const localFrame = frame - 390; // 0 to 120
   // 4 rapid sub-cuts of 30 frames (0.5s each)
   const cutIndex = Math.min(3, Math.floor(localFrame / 30));
@@ -1441,7 +1464,7 @@ const Scene4HyperSpeed = ({ frame, fps }) => {
 // SCENE 5 (510 - 600): "THE FINALE" — Supernova Reveal & Exponential Settle
 // ============================================================================
 
-const Scene5Finale = ({ frame, fps }) => {
+const Scene5Finale = ({ frame, fps }: { frame: number; fps: number }) => {
   const localFrame = frame - 510; // 0 to 90
 
   const badgeSpring = spring({
@@ -1685,7 +1708,7 @@ export default function App() {
   const [showCodeModal, setShowCodeModal] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const stageWrapperRef = useRef(null);
+  const stageWrapperRef = useRef<HTMLDivElement>(null);
   const [stageScale, setStageScale] = useState(0.5);
 
   // Compute responsive 16:9 scale factor so the 1920x1080 composition fits crisply
@@ -1710,10 +1733,10 @@ export default function App() {
   useEffect(() => {
     if (!isPlaying) return;
 
-    let animationFrameId;
+    let animationFrameId: number;
     let lastTime = performance.now();
 
-    const tick = (now) => {
+    const tick = (now: number) => {
       const deltaMs = now - lastTime;
       lastTime = now;
       const frameDelta = (deltaMs / 1000) * FPS * speed;
@@ -1757,8 +1780,8 @@ export default function App() {
 
   // Keyboard shortcuts (Space to Play/Pause, Left/Right arrows to step frames)
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLElement && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
       if (e.code === 'Space') {
         e.preventDefault();
         togglePlay();
