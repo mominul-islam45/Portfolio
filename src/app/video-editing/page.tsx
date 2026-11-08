@@ -8,10 +8,9 @@ import VideoMasonry from '@/components/VideoMasonry';
 import { videoCategories, videoProjects } from '@/data/videos';
 
 const softwareStack = [
-  { name: "Adobe Premiere Pro", role: "Primary cutting, timeline orchestration, sound mixing", level: "Expert" },
-  { name: "Adobe After Effects", role: "Tracking, expression scripting, complex compositing", level: "Advanced" },
-  { name: "DaVinci Resolve", role: "Color correction, HDR grading, Fairlight audio polish", level: "Expert" },
-  { name: "Audition & Soundly", role: "Diegetic sound design, Foley effects, noise cleanup", level: "Intermediate" }
+  { name: "Adobe Premiere Pro", role: "Commercial cutting, timeline orchestration, sound design, and rhythmic pacing.", level: "Expert" },
+  { name: "Adobe After Effects", role: "Trcking, expression scripting, complex compositing2D/3D motion design, UI animation, kinetic typography, and visual compositing.", level: "Expert" },
+  { name: "AI & Vibe Editing Workflow", role: "High-speed production using Claude, Flow, GenAI voice/video tools, and coded motion templates.", level: "Advanced" },
 ];
 
 export default function VideoEditingPage() {
@@ -21,13 +20,13 @@ export default function VideoEditingPage() {
         {/* Header */}
         <div className="space-y-4 mb-20 text-center">
           <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 font-semibold block">
-            <ScrollText as="span" text="Cinematic Productions" direction="up" />
+            <ScrollText as="span" text="COMMERCIAL PRODUCTIONS" direction="up" />
           </span>
           <h1 className="text-4xl sm:text-6xl font-normal text-zinc-900 dark:text-zinc-100">
             <ScrollText
               as="span"
               text="Video"
-              className="font-mafinest uppercase tracking-[0.12em] mr-2"
+              className="font-sans uppercase  "
               direction="up"
             />
             <ScrollText
@@ -38,7 +37,7 @@ export default function VideoEditingPage() {
             />
           </h1>
           <p className="text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto font-light leading-relaxed text-center">
-            Pacing, color harmony, and sonic architecture. Crafting high-retention narratives and sleek commercial sequences.
+            Pacing, motion hierarchy, and sonic precision. Crafting high-retention commercial sequences and brand stories that convert.
           </p>
         </div>
 
@@ -63,11 +62,11 @@ export default function VideoEditingPage() {
             <h2 className="text-xs font-mono uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500 border-b border-zinc-100 dark:border-zinc-900 pb-3 flex items-center gap-2">
               <Cpu className="w-4 h-4" /> Editing Pipeline
             </h2>
-            <h3 className="text-2xl font-normal text-zinc-900 dark:text-zinc-100 font-mafinest uppercase tracking-[0.05em]">
+            <h3 className="text-2xl font-normal text-zinc-900 dark:text-zinc-100 font-sans uppercase tracking-[0.05em]">
               The Software Stack
             </h3>
             <p className="text-zinc-500 dark:text-zinc-400 font-light text-sm leading-relaxed">
-              Equipped with elite editors, plugins, and color boards to transform raw sequences into high-retention stories.
+              Equipped with industry-standard Adobe tools and modern GenAI workflows to transform raw concepts into high-retention visual campaigns.
             </p>
           </div>
 
@@ -82,7 +81,7 @@ export default function VideoEditingPage() {
                     {stack.role}
                   </p>
                 </div>
-                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 border border-zinc-200 dark:border-zinc-800 rounded-full mt-2 sm:mt-0 text-zinc-500">
+                <span className="text-xs font-mono uppercase tracking-wider px-2 py-0.5 border border-zinc-200 dark:border-zinc-800 rounded-full mt-2 sm:mt-0 text-zinc-500">
                   {stack.level}
                 </span>
               </ScrollAnimation>

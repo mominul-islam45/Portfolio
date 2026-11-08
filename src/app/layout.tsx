@@ -1,24 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
-import localFont from "next/font/local";
+import { Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const mafinest = localFont({
-  src: "../../public/font/Mafinest-free.otf",
-  variable: "--font-mafinest-local",
-  display: "swap",
 });
 
 const playfairDisplay = Playfair_Display({
@@ -40,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${mafinest.variable} ${playfairDisplay.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${playfairDisplay.variable} h-full antialiased`}
       suppressHydrationWarning={true}
     >
       <head>
@@ -97,5 +90,4 @@ export default function RootLayout({
     </html>
   );
 }
-
 

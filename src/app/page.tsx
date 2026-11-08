@@ -18,7 +18,7 @@ import { ArrowRight } from 'lucide-react';
 
 const trailImages = [
   '/Statics%20%28reduced%29/Asan%20%282%29.webp',
-  '/Statics%20(reduced)/Hoodie.webp',
+  '/Statics%20%28reduced%29/Hoodie.webp',
   '/Statics%20%28reduced%29/Pannas%20%283%29.webp',
   '/Statics%20%28reduced%29/tasin%20elegance%20%281%29.webp',
   '/Statics%20%28reduced%29/Uttara%20bank%20%281%29.webp',
@@ -28,8 +28,9 @@ const trailImages = [
 
 const graphicSlides = [
   { image: '/Statics%20%28reduced%29/Asan%20%281%29.webp', title: 'Asan' },
-  { image: '/Statics%20%28reduced%29/Hoodie.webp', title: 'Hoodie Collection' },
-  { image: '/Statics%20%28reduced%29/janata%20insurance%20%282%29%20%281%29.webp', title: 'Marine Insurance' },
+  { image: '/Statics%20%28reduced%29/tenbyte%20%283%29.webp', title: 'tenbyte' },
+  {
+     image: '/Statics%20%28reduced%29/janata%20insurance%20%282%29%20%281%29.webp', title: 'Marine Insurance' },
   { image: '/Statics%20%28reduced%29/Uttara%20bank%20%281%29.webp', title: 'Uttara Bank Travel' },
   { image: '/Statics%20%28reduced%29/Uttara%20bank%20%288%29%20%281%29.webp', title: 'Butterfly EMI' },
   { image: '/Statics%20%28reduced%29/Pannas%20%283%29.webp', title: 'Pannas Irani Cape' },
@@ -88,19 +89,19 @@ export default function Home() {
           />
         </div>
 
-        <div className="max-w-5xl w-full px-6 md:px-12 mx-auto flex flex-col justify-center items-center space-y-6 text-center relative z-10 pointer-events-none">
+        <div className="max-w-5xl w-full px-6 md:px-12 pt-28 lg:pt-0 mx-auto flex flex-col justify-center items-center space-y-6 text-center relative z-10 pointer-events-none">
           <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 font-semibold pointer-events-auto">
             <ScrollText
               as="span"
-              text="My Creative Portfolio"
+              text="PORTFOLIO // 2026"
               direction="up"
             />
           </span>
-          <h1 className="text-4xl sm:text-7xl font-normal leading-[1.15] text-zinc-900 dark:text-zinc-100 pointer-events-auto">
+          <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-7xl font-normal leading-[1.15] text-zinc-900 dark:text-zinc-100 pointer-events-auto">
             <ScrollText
               as="span"
               text="Creative direction"
-              className="font-mafinest uppercase tracking-[0.12em] sm:tracking-[0.18em] block mr-2"
+              className="font-mono uppercase tracking-[0.12em] sm:tracking-[0.18em] block "
               direction="up"
             />
             <ScrollText
@@ -112,7 +113,7 @@ export default function Home() {
           </h1>
           <ScrollText
             as="p"
-            text="Welcome to my creative space. An overview of my work spanning Video Production, Graphic Design, and Professional Experience."
+            text="Elevating brands through high-retention motion graphics, commercial video production, and conversion-focused visual design."
             className="text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto font-light leading-relaxed pointer-events-auto"
             direction="up"
           />
@@ -137,11 +138,11 @@ export default function Home() {
           <div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="space-y-4">
               <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
-                <ScrollText as="span" text="Moving images" direction="up" />
+                <ScrollText as="span" text="MOTION & VIDEO" direction="up" />
               </span>
               <h2 className="text-3xl font-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-                <ScrollText as="span" text="Selected" className="font-mafinest uppercase tracking-[0.12em] mr-2" direction="up" />
-                <ScrollText as="span" text="sequences" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
+                <ScrollText as="span" text="FEATURED" className="font-sans uppercase tracking-[0.12em] " direction="up" />
+                <ScrollText as="span" text="reels & ads" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
               </h2>
             </div>
             <Link href="/video-editing" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-900 transition-transform hover:translate-x-1 dark:text-zinc-100">
@@ -159,7 +160,7 @@ export default function Home() {
               <ScrollText as="span" text="Trusted by" direction="up" />
             </span>
             <h2 className="text-3xl font-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-              <ScrollText as="span" text="Brands" className="font-mafinest uppercase tracking-[0.12em] mr-2" direction="up" />
+              <ScrollText as="span" text="Brands" className="font-sans uppercase tracking-[0.12em] " direction="up" />
               <ScrollText as="span" text="I’ve worked with" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
             </h2>
           </div>
@@ -185,11 +186,11 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-4 space-y-4 text-center">
             <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
-              <ScrollText as="span" text="Graphic work" direction="up" />
+              <ScrollText as="span" text="BRAND VISUALS" direction="up" />
             </span>
             <h2 className="text-3xl font-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-              <ScrollText as="span" text="Selected" className="font-mafinest uppercase tracking-[0.12em] mr-2" direction="up" />
-              <ScrollText as="span" text="designs" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
+              <ScrollText as="span" text="FEATURED" className="font-sans uppercase " direction="up" />
+              <ScrollText as="span" text="campaign work" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
             </h2>
           </div>
           <div className="mb-8 flex justify-center">
@@ -209,10 +210,10 @@ export default function Home() {
           <div className="mb-8 flex flex-col gap-5 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">
             <div className="space-y-3">
               <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
-                <ScrollText as="span" text="Thumbnail work" direction="up" />
+                <ScrollText as="span" text="HIGH-CTR ARTWORK" direction="up" />
               </span>
               <h2 className="text-3xl font-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-                <ScrollText as="span" text="Video" className="mr-2 font-mafinest uppercase tracking-[0.12em]" direction="up" />
+                <ScrollText as="span" text="VIDEO" className=" font-sans uppercase tracking-[0.12em]" direction="up" />
                 <ScrollText as="span" text="thumbnails" className="font-serif font-light italic lowercase tracking-normal" direction="up" />
               </h2>
             </div>
@@ -235,16 +236,16 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
-              <ScrollText as="span" text="Client feedback" direction="up" />
+              <ScrollText as="span" text="CLIENT FEEDBACK" direction="up" />
             </span>
             <h2 className="mt-4 text-3xl font-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-              <ScrollText as="span" text="Reviews" className="font-mafinest uppercase tracking-[0.12em] mr-2" direction="up" />
+              <ScrollText as="span" text="REVIEWS" className="font-sans uppercase tracking-[0.12em] " direction="up" />
               <ScrollText as="span" text="from clients" className="font-serif italic lowercase tracking-normal font-light" direction="up" />
             </h2>
           </div>
 
           <div className="flex justify-center">
-            <ReviewCarousel baseWidth={360} autoplay pauseOnHover loop />
+            <ReviewCarousel baseWidth={400} autoplay pauseOnHover loop />
           </div>
         </div>
       </section>
@@ -253,7 +254,7 @@ export default function Home() {
       <section className="py-24 px-6 md:px-12 max-w-4xl mx-auto text-center space-y-8">
         <ScrollText
           as="span"
-          text="Get In Touch"
+          text="COLLABORATION"
           className="text-xs uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 font-semibold block"
           direction="up"
         />
@@ -266,7 +267,7 @@ export default function Home() {
           />
         </h2>
         <p className="text-zinc-500 dark:text-zinc-400 font-light max-w-md mx-auto leading-relaxed">
-          I am always open to new projects, aesthetic explorations, and collaborative challenges.
+          Available for full-time creative roles, agency partnerships, and high-impact commercial projects.
         </p>
         <ScrollAnimation direction="up" delay={0.2}>
           <div className="pt-4">

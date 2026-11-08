@@ -69,7 +69,7 @@ function ReviewSlide({
   return (
     <motion.article
       key={`${item.id}-${index}`}
-      className="relative flex shrink-0 flex-col items-center justify-center overflow-hidden rounded-full border-0 bg-zinc-100 p-6 text-center shadow-[0_18px_48px_-28px_rgba(0,0,0,0.7)] dark:bg-[#120F17]"
+      className="relative flex shrink-0 flex-col items-center justify-center overflow-hidden rounded-full border-0 bg-zinc-100 px-9 py-6 pb-12 text-center shadow-[0_18px_48px_-28px_rgba(0,0,0,0.7)] dark:bg-[#120F17] sm:px-10 sm:py-7 sm:pb-14"
       style={{
         width: itemWidth,
         height: itemWidth,
@@ -103,7 +103,7 @@ function ReviewSlide({
         <FiveStarRating />
       </div>
 
-      <p className="max-w-[18rem] text-sm leading-6 text-zinc-700 dark:text-zinc-200">“{item.quote}”</p>
+      <p className="w-full max-w-[16rem] text-sm leading-6 text-zinc-700 dark:text-zinc-200">“{item.quote}”</p>
     </motion.article>
   );
 }
@@ -139,7 +139,7 @@ const DEFAULT_ITEMS: ReviewItem[] = [
     location: 'Australia',
     flag: '🇦🇺',
     quote:
-      'Freelancer did a terrific job in winning the contest i set. Even after being awarded, he was happy to work with me until i was 100% satisfied. I highly recommend his services.',
+      'Mominul consistently delivers studio-grade motion graphics and social media visuals right on deadline. His sense of pacing and brand aesthetics directly boosted our campaign engagement.',
     image: '/Clients%20Headshot/Bernard%20P..webp'
   }
 ];

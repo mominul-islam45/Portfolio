@@ -97,13 +97,6 @@ export default function VideoMasonry({ videos, columnsClassName = 'columns-1 gap
                 tabIndex={-1}
                 className="pointer-events-none absolute inset-0 h-full w-full scale-[1.01] object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="pointer-events-none absolute inset-0 z-1 bg-linear-to-t from-black/75 via-black/5 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-4 bottom-4 z-2 flex items-end justify-between gap-3 text-white">
-                <span className="text-sm font-medium tracking-wide">{video.title}</span>
-                <span className="shrink-0 rounded-full border border-white/35 bg-black/20 px-2 py-1 text-[10px] uppercase tracking-[0.16em] backdrop-blur-md">
-                  Open
-                </span>
-              </div>
             </div>
           </ScrollAnimation>
         ))}

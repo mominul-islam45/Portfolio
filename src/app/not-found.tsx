@@ -13,7 +13,7 @@ export default function NotFound() {
         
         {/* Large 404 Text */}
         <ScrollAnimation direction="up" delay={0.1}>
-          <span className="text-[120px] sm:text-[160px] font-normal leading-none tracking-tighter text-zinc-200 dark:text-zinc-900 font-serif select-none block">
+          <span className="text-[120px] sm:text-[160px] font-normal leading-none tracking-tighter text-zinc-200 dark:text-zinc-900 font-sans select-none block">
             404
           </span>
         </ScrollAnimation>
@@ -23,7 +23,7 @@ export default function NotFound() {
             <ScrollText
               as="span"
               text="Lost in the"
-              className="font-mafinest uppercase tracking-[0.12em] block sm:inline mr-2"
+              className="font-sans uppercase tracking-[0.12em] block sm:inline mr-2"
               direction="up"
             />
             <ScrollText

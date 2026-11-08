@@ -66,8 +66,8 @@ export default function ProfileCard({
           loading="eager"
         />
         <div className="absolute inset-x-5 top-5 z-2 text-center text-white drop-shadow-lg">
-          <h2 className="text-xl font-semibold tracking-tight">{name}</h2>
-          <p className="mt-1 text-xs text-white/75">{title}</p>
+          <h3 className="font-serif text-lg font-semibold tracking-tight text-white/75">{name}</h3>
+          <h4 className="mt-1 text-xs text-white/50">{title}</h4>
         </div>
         {showUserInfo && (
           <div className="absolute inset-x-5 bottom-5 z-2 flex items-center justify-between gap-3 rounded-2xl border border-white/20 bg-black/25 p-2 text-white backdrop-blur-xl">
@@ -78,7 +78,7 @@ export default function ProfileCard({
             <button
               type="button"
               onClick={onContactClick}
-              className="shrink-0 rounded-lg border border-white/25 px-2 py-1 text-[10px] font-semibold text-white transition-colors hover:bg-white/15"
+              className="shrink-0 rounded-lg border border-white/25 px-2 py-1 text-xs font-semibold text-white transition-colors hover:bg-white/15"
             >
               Contact
             </button>

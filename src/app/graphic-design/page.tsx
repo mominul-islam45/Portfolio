@@ -13,11 +13,11 @@ const graphicImages = [
   'lucky shop (1).webp', 'lucky shop (4).webp', 'lucky shop (5).webp', 'Mancha.webp',
   'nazifa mart (1).webp', 'Pannas (3).webp', 'Pannas (4).webp', 'Pannas (5).webp', 'Pannas (7).webp',
   'Physiotherapy.webp', 'qzent (1).webp', 'samoz.webp', 'super food house.webp',
-  'tasin elegance (1).webp', 'tasin elegance (2).webp', 'tenbyte (2).webp', 'thikana valley.webp',
+  'tasin elegance (1).webp', 'tasin elegance (2).webp', 'tenbyte (2).webp', 'tenbyte (1).webp', 'tenbyte (3).webp', 'thikana valley.webp',
   'Uttara bank (1) (1).webp', 'Uttara bank (1).webp', 'Uttara bank (10).webp', 'Uttara bank (12).webp',
   'Uttara bank (13).webp', 'Uttara bank (14).webp', 'Uttara bank (2) (1).webp', 'Uttara bank (2).webp',
   'Uttara bank (3).webp', 'Uttara bank (4) (1).webp', 'Uttara bank (5) (1).webp', 'Uttara bank (5).webp',
-  'Uttara bank (8) (1).webp', 'Uttara bank (8).webp', 'Uttara bank (9) (1).webp', 'Uttara bank (9).webp',
+  'Uttara bank (8) (1).webp', 'Uttara bank (8).webp', 'Uttara bank (9) (1).webp', 'Uttara bank (9).webp', 'Uttara bank.webp',
 ].map((filename) => `/Statics%20%28reduced%29/${filename.replaceAll(' ', '%20').replaceAll('(', '%28').replaceAll(')', '%29')}`);
 
 const thumbnailImages = Array.from({ length: 8 }, (_, index) => `/Thumbnails/${index + 1}.webp`);
@@ -29,13 +29,13 @@ export default function GraphicDesignPage() {
         {/* Header */}
         <div className="space-y-4 mb-20 text-center">
           <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 font-semibold block">
-            <ScrollText as="span" text="Visual Artworks" direction="up" />
+            <ScrollText as="span" text="VISUAL IDENTITY & CAMPAIGNS" direction="up" />
           </span>
           <h1 className="text-4xl sm:text-6xl font-normal text-zinc-900 dark:text-zinc-100">
             <ScrollText
               as="span"
               text="Graphic"
-              className="font-mafinest uppercase tracking-[0.12em] mr-2"
+              className="font-sans uppercase  "
               direction="up"
             />
             <ScrollText
@@ -46,14 +46,14 @@ export default function GraphicDesignPage() {
             />
           </h1>
           <p className="text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto font-light leading-relaxed text-center">
-            Branding architectures, editorial grids, print layouts, and bespoke vector art. Harmonizing layout grids and typography systems.
+            Bold typography, strategic color harmony, and scroll-stopping layouts designed to maximize brand awareness and ROI.
           </p>
         </div>
 
         {/* Gallery Masonry */}
         <div className="mb-24 space-y-8">
-          <h2 className="border-b border-zinc-100 pb-3 text-xs font-mono uppercase tracking-[0.15em] text-zinc-400 dark:border-zinc-900 dark:text-zinc-500">
-            Selected graphic work
+          <h2 className="border-b border-zinc-100 pb-3 text-xs font-mono uppercase  text-zinc-400 dark:border-zinc-900 dark:text-zinc-500">
+            Featured campaign work
           </h2>
           <GraphicMasonry images={graphicImages} />
         </div>
@@ -72,18 +72,18 @@ export default function GraphicDesignPage() {
               <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold">
                 <Palette className="w-4 h-4" /> Editorial & Brand Philosophies
               </span>
-              <h3 className="text-xl font-mafinest uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
-                Visual space, weights, and high-fidelity output.
+              <h3 className="text-xl font-sans uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
+                VISUAL IMPACT, CLARITY, AND HIGH-CONVERTING DESIGN.
               </h3>
               <p className="text-sm font-light text-zinc-500 dark:text-zinc-400">
-                I believe layouts should breathe. Every element needs weight, direction, and a clear relationship to surrounding typography.
+                Crafted in Adobe Photoshop, Illustrator, and Figma with a 95% client satisfaction track record.
               </p>
             </div>
             <a
               href="/contact"
               className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-zinc-950 dark:bg-zinc-50 text-white dark:text-zinc-950 text-xs font-semibold uppercase tracking-wider hover:bg-zinc-900 dark:hover:bg-zinc-100 transition-colors shrink-0"
             >
-              Start designing
+              START A PROJECT
             </a>
           </div>
         </ScrollAnimation>

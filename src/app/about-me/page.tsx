@@ -64,18 +64,18 @@ const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const pillars = [
   {
     icon: Compass,
-    title: "Minimalism First",
-    description: "I believe interfaces and assets should have air and light. Stripping away unnecessary clutter enables focus on what matters."
+    title: "Clean Aesthetics",
+    description: "Every frame and poster is built with intentional hierarchy, bold typography, and visual breathing room so the core brand message lands instantly."
   },
   {
     icon: Heart,
-    title: "Artistic Pacing",
-    description: "Whether editing a 60-second commercial or compiling a design system, rhythm and timing dictate the overall user experience."
+    title: "Rhythmic Pacing",
+    description: "Whether cutting a 15-second social reel or a 60-second SaaS explainer, tight audio-visual sync and smooth transitions drive viewer retention."
   },
   {
     icon: RefreshCw,
-    title: "Modular Code",
-    description: "Building clean systems. Designing custom templates that are reusable, fast-loading, and easily maintainable."
+    title: "AI & Vibe Editing",
+    description: "Leveraging Claude, Flow, GenAI tools, and coding agents (Antigravity, Next.js) to scale production volume while cutting turnaround time and resource costs."
   }
 ];
 
@@ -106,7 +106,7 @@ export default function AboutMePage() {
             <ScrollText
               as="span"
               text="About"
-              className="font-mafinest uppercase tracking-[0.12em] mr-2"
+              className="font-sans uppercase tracking-[0.12em] mr-2"
               direction="up"
             />
             <ScrollText
@@ -117,7 +117,7 @@ export default function AboutMePage() {
             />
           </h1>
           <p className="text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto font-light leading-relaxed text-center">
-            A creative developer and editor based at the intersection of design, cinematography, and web engineering.
+            A Video & Motion Designer operating at the intersection of commercial storytelling, brand design, and AI-powered creative workflows.
           </p>
         </div>
 
@@ -127,20 +127,20 @@ export default function AboutMePage() {
             <h2 className="text-xs font-mono uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500 border-b border-zinc-100 dark:border-zinc-900 pb-3 flex items-center gap-2">
               <User className="w-4 h-4" /> Who I Am
             </h2>
-            <h3 className="text-2xl font-normal text-zinc-900 dark:text-zinc-100 font-mafinest uppercase tracking-[0.05em] leading-snug">
-              Creating digital spaces with weight and feel.
+            <h3 className="text-2xl font-normal text-zinc-900 dark:text-zinc-100 font-sans uppercase tracking-[0.05em] leading-snug">
+              CRAFTING VISUAL STORIES THAT CONVERT AND CAPTIVATE.
             </h3>
           </div>
 
           <div className="md:col-span-8 text-zinc-500 dark:text-zinc-400 space-y-6 font-light leading-relaxed text-sm">
             <ScrollText
               as="p"
-              text="I am a multi-disciplinary visual artist. My work focuses on constructing digital artifacts that feel tangible. By mixing minimal layout systems with customized transitions, I build memories rather than just pixels."
+              text="I am a multidisciplinary Video, Motion, and Graphic Designer based in Dhaka. My work focuses on transforming brand objectives into high-impact visual campaigns that turn passive scrollers into active customers."
               direction="left"
             />
             <ScrollText
               as="p"
-              text="My editing background lets me look at layout layouts through a lens of cinematography, prioritizing pacing, contrast, and focus. Whether assembling a DaVinci Resolve grading board or structuring a Next.js directory, my goal remains the same: delivering exceptional fidelity."
+              text="Leading creative production at Qzent has shaped how I approach every frame—prioritizing rhythm, contrast, and clean typography. Whether directing a commercial in After Effects, designing social campaigns in Photoshop, or automating workflows with Next.js and AI agents like Antigravity, my goal remains the same: studio-grade output in record time."
               direction="left"
             />
           </div>
@@ -186,7 +186,7 @@ export default function AboutMePage() {
               <ScrollText
                 as="span"
                 text="Let's construct"
-                className="font-mafinest uppercase tracking-[0.12em] mr-2"
+                className="font-sans uppercase tracking-[0.12em] "
                 direction="up"
               />
               <ScrollText
@@ -270,15 +270,15 @@ export default function AboutMePage() {
                 
                 <div className="space-y-4">
                   <a 
-                    href="mailto:hello@firstproject.com" 
+                    href="mominul4586@gmail.com" 
                     className="flex items-center gap-4 group text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white transition-colors"
                   >
                     <div className="w-10 h-10 rounded-xl bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center border border-zinc-100 dark:border-zinc-900 group-hover:scale-105 transition-transform">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-400">Direct Email</span>
-                      <p className="text-sm font-medium">hello@firstproject.com</p>
+                      <span className="text-xs uppercase font-mono tracking-wider text-zinc-400">Direct Email</span>
+                      <p className="text-sm font-medium">mominul4586@gmail.com</p>
                     </div>
                   </a>
 
@@ -287,7 +287,7 @@ export default function AboutMePage() {
                       <Globe className="w-4 h-4" />
                     </div>
                     <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-400">Timezone</span>
+                      <span className="text-xs uppercase font-mono tracking-wider text-zinc-400">Timezone</span>
                       <p className="text-sm font-medium">Dhaka, Bangladesh (GMT+6)</p>
                     </div>
                   </div>
@@ -301,20 +301,11 @@ export default function AboutMePage() {
                 </h3>
 
                 <div className="flex gap-4">
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Profile"
-                    className="w-11 h-11 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 active:scale-95 flex items-center justify-center transition-all"
-                  >
-                    <GithubIcon className="w-4.5 h-4.5" />
-                  </a>
 
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/mominul-islam-89141b267/"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
                     className="w-11 h-11 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 active:scale-95 flex items-center justify-center transition-all"
                   >
@@ -324,7 +315,7 @@ export default function AboutMePage() {
                   <a
                     href="https://instagram.com"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     aria-label="Instagram Profile"
                     className="w-11 h-11 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 active:scale-95 flex items-center justify-center transition-all"
                   >
