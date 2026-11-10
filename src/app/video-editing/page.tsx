@@ -45,7 +45,7 @@ export default function VideoEditingPage() {
         <div className="mb-28 space-y-20">
           {videoCategories.map((category) => (
             <section key={category} className="space-y-8">
-              <h2 className="flex items-center gap-2 border-b border-zinc-100 pb-3 text-xs font-mono uppercase tracking-[0.15em] text-zinc-400 dark:border-zinc-900 dark:text-zinc-500">
+              <h2 className="flex items-center gap-2 border-b border-zinc-100 pb-3 text-[15px] font-mono uppercase tracking-[0.15em] text-zinc-400 dark:border-zinc-900 dark:text-zinc-500">
                 {category}
               </h2>
               <VideoMasonry
